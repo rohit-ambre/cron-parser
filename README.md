@@ -2,12 +2,13 @@
 
 ## Get Started
 
-1. clone the repository
+1. Clone the repository
 2. Run `npm install`
 3. Run `npm build`
 4. Run `chmod +x dist/index.js`
 5. Run `npm install -g .` <br/> (`--force` for reinstallation)
-6. Here you go, Run `cron-parser "5-10 4,8 1 */3 0"`
+6. Here you go 🎉, Run `cron-parser "5-10 4,8 1 */3 0"`
+7. You can run tests by `npm test`
 
 ## Examples
 
