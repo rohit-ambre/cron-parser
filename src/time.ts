@@ -15,10 +15,10 @@ const checkStar = (time: string) => {
 }
 
 const checkNumber = (time: string) => {
-    if (!isNaN(Number(time))) {
-        return true
+    if (!time || isNaN(Number(time))) {
+        return false
     }
-    return false
+    return true
 }
 
 const checkStepValue = (time: string) => {
@@ -71,6 +71,10 @@ class CronTime {
         this.maxRange = timeRangeMap[this.type][1]
     }
 
+    getTimeString() {
+        return this.time;
+    }
+
     get timeValue() {
         return this._timeValue;
     }
@@ -81,7 +85,6 @@ class CronTime {
 
     validate(): ValidateResponse {
         if (!this.time) {
-            console.log(`${this.type} string missing`)
             return {
                 valid: false,
                 msg: `${this.type} string missing`
@@ -104,7 +107,8 @@ class CronTime {
             }
         }
         if (checkStepValue(this.time)) {
-            const splits = this.time.split('/')
+            let splits = this.time.split('/')
+            splits = splits.filter(Boolean)
             if (!splits.length || splits.length !== 2) {
                 return {
                     valid: false,
@@ -132,14 +136,15 @@ class CronTime {
             this._timeValue = splits.map(i => Number(i))
         }
         if (checkRange(this.time)) {
-            const splits = this.time.split('-')
-             if (!splits.length || splits.length !== 2) {
+            let splits = this.time.split('-')
+            splits = splits.filter(Boolean)
+            if (!splits.length || splits.length !== 2) {
                 return {
                     valid: false,
                     msg: 'Incorrect range value'
                 }
             }
-            if (!checkNumber(splits[0]) || !checkNumber(splits[1]) || !timeRangeCheck(splits[0], this.minRange, this.maxRange) || !timeRangeCheck(splits[1], this.minRange, this.maxRange) || splits[0] > splits[1]) {
+            if (!checkNumber(splits[0]) || !checkNumber(splits[1]) || !timeRangeCheck(splits[0], this.minRange, this.maxRange) || !timeRangeCheck(splits[1], this.minRange, this.maxRange) || Number(splits[0]) > Number(splits[1])) {
                 return {
                     valid: false,
                     msg: 'Invalid range value'

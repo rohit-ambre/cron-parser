@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 import Cron from './src/cron'
-const args = process.argv.slice(2);
 
-const init = (args: string[]) => {
+const init = () => {
+    const args = process.argv.slice(2);
+
     if (!args.length) {
         console.log("Please provide cron string")
         return "Please provide cron string"
@@ -22,4 +23,6 @@ const init = (args: string[]) => {
     cron.printCronTimings()
 }
 
-init(args)
+init()
+
+export { init }

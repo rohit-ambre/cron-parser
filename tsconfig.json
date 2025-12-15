@@ -6,7 +6,7 @@
     "target": "es2019",
     "strict": true,
     "moduleResolution": "node",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "skipLibCheck": true,
     "removeComments": false
   },

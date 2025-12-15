@@ -26,7 +26,6 @@ class Cron {
     public validateCronString(): ValidateResponse {
         const cronSplits: string[] = this.cronString.split(' ');
         if (cronSplits.length != 5) {
-            console.log("Invalid cron string provided")
             return {valid: false, msg: "Invalid cron string provided"};
         }
         this.minuteString = cronSplits?.[0] || "";

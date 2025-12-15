@@ -4,9 +4,11 @@
     "description": "",
     "main": "./dist/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
         "prebuild": "rm -rf dist",
-        "build": "tsc"
+        "build": "tsc",
+        "test:coverage": "jest --coverage"
+
     },
     "bin": {
         "cron-parser": "./dist/index.js"
@@ -14,10 +16,12 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {},
     "devDependencies": {
+        "@types/jest": "^30.0.0",
+        "@types/node": "^25.0.1",
+        "jest": "^30.2.0",
+        "ts-jest": "^29.4.6",
         "ts-node": "^10.9.2",
-        "typescript": "^5.9.3",
-        "@types/node": "^25.0.1"
+        "typescript": "^5.9.3"
     }
 }
