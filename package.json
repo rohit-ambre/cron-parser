@@ -1,0 +1,23 @@
+{
+    "name": "cron-parser",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prebuild": "rm -rf dist",
+        "build": "tsc"
+    },
+    "bin": {
+        "cron-parser": "./dist/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3",
+        "@types/node": "^25.0.1"
+    }
+}
